@@ -4,7 +4,7 @@ using System.Text;
 
 namespace XmlCheckTool.Models.BangChiTieu
 {
-    internal class XML5_Model
+    public class XML5_Model
     {
     }
 }

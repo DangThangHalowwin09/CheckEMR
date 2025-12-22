@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Text;
 using System.Xml.Linq;
 using XmlCheckTool.Models.BangChiTieu;
+using XmlCheckTool.Helpers;
 
 namespace XmlCheckTool.Services.ParseService
 {
@@ -15,47 +16,27 @@ namespace XmlCheckTool.Services.ParseService
         {
 
             var result = new List<XML2_Model>();
-
-            XNamespace ns = docXML.Root.GetDefaultNamespace();
-            Console.WriteLine(ns);
-            var thuocNodes = docXML
-                .Descendants(ns + "CHI_TIET_THUOC");
-            Console.WriteLine(thuocNodes);
-            //Console.WriteLine(thuocNodes);
-
+            var thuocNodes = docXML.Descendants("CHI_TIET_THUOC");
+            Debug.WriteLine(thuocNodes.ToString());
             foreach (var node in thuocNodes)
             {
-
                 var thuoc = new XML2_Model
                 {
-                    //Console.WriteLine(node.Element(ns + "MA_LK")?.Value?.Trim());
-                    MA_LK = node.Element(ns + "MA_LK")?.Value?.Trim(),
-                    STT = node.Element(ns + "STT")?.Value?.Trim(),
-                    MA_THUOC = node.Element(ns + "MA_THUOC")?.Value?.Trim(),
+                    MA_LK = node.GetValue("MA_LK"),
+                    STT = node.GetValue("STT"),
+                    MA_THUOC = node.GetValue("MA_THUOC"),
 
-                    SO_LUONG = ParseDecimal(node.Element(ns + "SO_LUONG")?.Value),
-                    DON_GIA = ParseDecimal(node.Element(ns + "DON_GIA")?.Value),
-                    THANH_TIEN_BV = ParseDecimal(node.Element(ns + "THANH_TIEN_BV")?.Value),
-                    THANH_TIEN_BH = ParseDecimal(node.Element(ns + "THANH_TIEN_BH")?.Value)
+                    SO_LUONG = ParserFunctionHelper.Parse(node.Element("SO_LUONG")),
+                    DON_GIA = ParserFunctionHelper.Parse(node.Element("DON_GIA")),
+                    THANH_TIEN_BV = ParserFunctionHelper.Parse(node.Element("THANH_TIEN_BV")),
+                    THANH_TIEN_BH = ParserFunctionHelper.Parse(node.Element("THANH_TIEN_BH"))
                 };
 
                 result.Add(thuoc);
             }
-            
             return result;
         }
-        private static decimal ParseDecimal(string? value)
-        {
-            if (string.IsNullOrWhiteSpace(value))
-                return 0;
-
-            return decimal.TryParse(
-                value,
-                NumberStyles.AllowThousands | NumberStyles.AllowDecimalPoint,
-                new CultureInfo("vi-VN"),
-                out var result
-            ) ? result : 0;
-        }
+        
     }
 
 }

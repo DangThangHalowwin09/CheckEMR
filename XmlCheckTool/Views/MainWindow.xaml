@@ -32,7 +32,7 @@
                 <DataGrid ItemsSource="{Binding XML2_UI}" AutoGenerateColumns="True"/>
             </TabItem>
             <TabItem Header="XML3">
-                <DataGrid ItemsSource="{Binding XML1_List}" AutoGenerateColumns="True"/>
+                <DataGrid ItemsSource="{Binding XML3_UI}" AutoGenerateColumns="True"/>
             </TabItem>
             <TabItem Header="XML4">
                 <DataGrid ItemsSource="{Binding XML1_List}" AutoGenerateColumns="True"/>

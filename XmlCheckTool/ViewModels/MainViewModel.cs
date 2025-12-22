@@ -15,7 +15,7 @@ namespace XmlCheckTool.ViewModels
 
         public ObservableCollection<XML1_Model> XML1_UI { get; } = new();
         public ObservableCollection<XML2_Model> XML2_UI { get; } = new();
-        public ObservableCollection<XML1_Model> XML3_UI { get; } = new();
+        public ObservableCollection<XML3_Model> XML3_UI { get; } = new();
         public ObservableCollection<XML1_Model> XML4_UI { get; } = new();
         public ObservableCollection<XML1_Model> XML5_UI { get; } = new();
 
@@ -40,8 +40,11 @@ namespace XmlCheckTool.ViewModels
                     XML1_UI.Add(result.XML1);
                     foreach(var XML in result.XML2_List)
                     {
-                        XML2_UI.Add(XML);
-                        //Console.WriteLine(XML);
+                        XML2_UI.Add(XML);                    
+                    }
+                    foreach (var XML in result.XML3_List)
+                    {
+                        XML3_UI.Add(XML);
                     }
                     //XML2_UI.Add(result.XML2_List);
                     //BenhNhanList.AddRange(result.BenhNhans);

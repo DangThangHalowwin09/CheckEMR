@@ -10,7 +10,8 @@ namespace XmlCheckTool.Models.BangChiTieu
 
         // XML2 → XML15
         public List<XML2_Model> XML2_List { get; set; } = new();
-        //public List<XML3_Model> XML3_List { get; set; } = new();
+        public List<XML3_Model> XML3_List { get; set; } = new();
         //public List<XML4_Model> XML4_List { get; set; } = new();
+        //public List<XML5_Model> XML5_List { get; set; } = new();
     }
 }
