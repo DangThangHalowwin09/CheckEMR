@@ -25,11 +25,11 @@
         <TabControl>
             
             <TabItem Header="XML1">
-                <DataGrid ItemsSource="{Binding XML1}" AutoGenerateColumns="True"/>
+                <DataGrid ItemsSource="{Binding XML1_UI}" AutoGenerateColumns="True"/>
             </TabItem>
             
             <TabItem Header="XML2">
-                <DataGrid ItemsSource="{Binding XML1_List}" AutoGenerateColumns="True"/>
+                <DataGrid ItemsSource="{Binding XML2_UI}" AutoGenerateColumns="True"/>
             </TabItem>
             <TabItem Header="XML3">
                 <DataGrid ItemsSource="{Binding XML1_List}" AutoGenerateColumns="True"/>

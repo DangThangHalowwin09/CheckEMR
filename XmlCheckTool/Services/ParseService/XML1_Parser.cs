@@ -10,6 +10,7 @@ namespace XmlCheckTool.Services.ParseService
     {
         public static XML1_Model Parse(XDocument doc)
         {
+
             return new XML1_Model
             {
                 MA_LK = GetValue(doc, "MA_LK"),

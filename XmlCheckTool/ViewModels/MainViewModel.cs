@@ -13,11 +13,11 @@ namespace XmlCheckTool.ViewModels
     {
         public RelayCommand ImportXmlCommand { get; }
 
-        public ObservableCollection<XML1_Model> XML1 { get; } = new();
-        public ObservableCollection<XML1_Model> XML2_List { get; } = new();
-        public ObservableCollection<XML1_Model> XML3_List { get; } = new();
-        public ObservableCollection<XML1_Model> XML4_List { get; } = new();
-        public ObservableCollection<XML1_Model> XML5_List { get; } = new();
+        public ObservableCollection<XML1_Model> XML1_UI { get; } = new();
+        public ObservableCollection<XML2_Model> XML2_UI { get; } = new();
+        public ObservableCollection<XML1_Model> XML3_UI { get; } = new();
+        public ObservableCollection<XML1_Model> XML4_UI { get; } = new();
+        public ObservableCollection<XML1_Model> XML5_UI { get; } = new();
 
         private readonly IXmlImportService _xmlService;
         private readonly IFilePickerService _filePicker;
@@ -37,7 +37,13 @@ namespace XmlCheckTool.ViewModels
                 try
                 {
                     var result = _xmlService.Import(file);
-                    XML1.Add(result.XML1_List);
+                    XML1_UI.Add(result.XML1);
+                    foreach(var XML in result.XML2_List)
+                    {
+                        XML2_UI.Add(XML);
+                        //Console.WriteLine(XML);
+                    }
+                    //XML2_UI.Add(result.XML2_List);
                     //BenhNhanList.AddRange(result.BenhNhans);
                     //DichVuList.AddRange(result.DichVus);
                 }

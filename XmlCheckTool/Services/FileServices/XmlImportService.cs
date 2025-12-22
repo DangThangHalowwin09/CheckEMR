@@ -21,7 +21,8 @@ namespace XmlCheckTool.Services.FileServices
 
             var result = new XmlImportResult
             {
-                XML1_List = XML1_Parser.Parse(doc)
+                XML1 = XML1_Parser.Parse(doc),
+                XML2_List = XML2_Parser.Parse(doc)
                 //BenhNhans = ParseBenhNhan(doc),
                 //DichVus = ParseDichVu(doc),
                 //Thuocs = ParseThuoc(doc)
