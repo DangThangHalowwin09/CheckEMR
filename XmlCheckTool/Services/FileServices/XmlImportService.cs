@@ -23,9 +23,12 @@ namespace XmlCheckTool.Services.FileServices
             {
                 XML1 = XML1_Parser.Parse(doc),
                 XML2_List = XML2_Parser.Parse(doc),
-                XML3_List = XML3_Parser.Parse(doc)
+                XML3_List = XML3_Parser.Parse(doc),
+                XML4_List = XML4_Parser.Parse(doc)
                 
             };
+
+
 
             return result;
         }

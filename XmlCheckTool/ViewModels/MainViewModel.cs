@@ -16,7 +16,7 @@ namespace XmlCheckTool.ViewModels
         public ObservableCollection<XML1_Model> XML1_UI { get; } = new();
         public ObservableCollection<XML2_Model> XML2_UI { get; } = new();
         public ObservableCollection<XML3_Model> XML3_UI { get; } = new();
-        public ObservableCollection<XML1_Model> XML4_UI { get; } = new();
+        public ObservableCollection<XML4_Model> XML4_UI { get; } = new();
         public ObservableCollection<XML1_Model> XML5_UI { get; } = new();
 
         private readonly IXmlImportService _xmlService;
@@ -46,9 +46,11 @@ namespace XmlCheckTool.ViewModels
                     {
                         XML3_UI.Add(XML);
                     }
-                    //XML2_UI.Add(result.XML2_List);
-                    //BenhNhanList.AddRange(result.BenhNhans);
-                    //DichVuList.AddRange(result.DichVus);
+                    foreach (var XML in result.XML4_List)
+                    {
+                        XML4_UI.Add(XML);
+                    }
+                  
                 }
                 catch (Exception ex)
                 {
