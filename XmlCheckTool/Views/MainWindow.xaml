@@ -15,19 +15,31 @@
     <DockPanel Margin="10">
 
         <!-- Button -->
-        <Button Content="Import các file hồ sơ bệnh án"
+        <StackPanel Orientation="Horizontal"
+                DockPanel.Dock="Top"
+                Margin="0,0,0,10">
+
+            <!-- Button Import -->
+            <Button Content="Import các file hồ sơ bệnh án"
                 Command="{Binding ImportXmlCommand}"
                 Height="40"
-                DockPanel.Dock="Top"
-                Margin="0,0,0,10"/>
+                Width="250"
+                Margin="0,0,10,0"/>
+
+            <!-- Button Clear -->
+            <Button Content="Xóa dữ liệu đã import"
+                    Command="{Binding ClearXmlCommand}"
+                    IsEnabled="{Binding CanClear}"
+                    Height="40"
+                    Width="200"/>
+        </StackPanel>
 
         <!-- 15 bảng -->
         <TabControl>
-            
+
             <TabItem Header="XML1">
                 <DataGrid ItemsSource="{Binding XML1_UI}" AutoGenerateColumns="True"/>
             </TabItem>
-            
             <TabItem Header="XML2">
                 <DataGrid ItemsSource="{Binding XML2_UI}" AutoGenerateColumns="True"/>
             </TabItem>
@@ -40,34 +52,10 @@
             <TabItem Header="XML5">
                 <DataGrid ItemsSource="{Binding XML1_List}" AutoGenerateColumns="True"/>
             </TabItem>
-            <TabItem Header="XML6">
-                <DataGrid ItemsSource="{Binding XML1_List}" AutoGenerateColumns="True"/>
-            </TabItem>
-            <TabItem Header="XML7">
-                <DataGrid ItemsSource="{Binding XML1_List}" AutoGenerateColumns="True"/>
-            </TabItem>
-            <TabItem Header="XML8">
-                <DataGrid ItemsSource="{Binding XML1_List}" AutoGenerateColumns="True"/>
-            </TabItem>
-            <TabItem Header="XML9">
-                <DataGrid ItemsSource="{Binding XML1_List}" AutoGenerateColumns="True"/>
-            </TabItem>
-            <TabItem Header="XML10">
-                <DataGrid ItemsSource="{Binding XML1_List}" AutoGenerateColumns="True"/>
-            </TabItem>
-            <TabItem Header="XML11">
-                <DataGrid ItemsSource="{Binding XML1_List}" AutoGenerateColumns="True"/>
-            </TabItem>
-            <TabItem Header="XML12">
-                <DataGrid ItemsSource="{Binding XML1_List}" AutoGenerateColumns="True"/>
-            </TabItem>
             <TabItem Header="XML13">
                 <DataGrid ItemsSource="{Binding XML1_List}" AutoGenerateColumns="True"/>
             </TabItem>
-            <TabItem Header="XML14">
-                <DataGrid ItemsSource="{Binding XML1_List}" AutoGenerateColumns="True"/>
-            </TabItem>
-            
+
             <!-- … tiếp tục tới 15 Tab -->
         </TabControl>
 

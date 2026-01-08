@@ -27,9 +27,6 @@ namespace XmlCheckTool.Services.FileServices
                 XML4_List = XML4_Parser.Parse(doc)
                 
             };
-
-
-
             return result;
         }
     }

@@ -53,10 +53,5 @@ namespace XmlCheckTool.Models.BangChiTieu
         public string TAI_SU_DUNG { get; set; }
         public string DU_PHONG { get; set; }
 
-
-      /*  public decimal PHAM_VI { get; set; }
-        public decimal SO_LUONG { get; set; }
-        public decimal DON_GIA_BV { get; set; }
-        public decimal DON_GIA_BH { get; set; }*/
     }
 }
