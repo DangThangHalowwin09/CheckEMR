@@ -25,11 +25,12 @@ namespace XmlCheckTool.Services.ParseService
                     MA_LK = node.GetValue("MA_LK"),
                     STT = node.GetValue("STT"),
                     MA_THUOC = node.GetValue("MA_THUOC"),
-
-                    SO_LUONG = ParserFunctionHelper.Parse(node.Element("SO_LUONG")),
-                    DON_GIA = ParserFunctionHelper.Parse(node.Element("DON_GIA")),
-                    THANH_TIEN_BV = ParserFunctionHelper.Parse(node.Element("THANH_TIEN_BV")),
-                    THANH_TIEN_BH = ParserFunctionHelper.Parse(node.Element("THANH_TIEN_BH"))
+                    MA_KHOA = node.GetValue("MA_KHOA"),
+                    MA_BAC_SI = node.GetValue("MA_BAC_SI"),
+                    MA_DICH_VU = node.GetValue("MA_DICH_VU"),
+                    NGAY_YL = node.GetValue("NGAY_YL"),
+                    NGAY_TH_YL = node.GetValue("NGAY_TH_YL"),
+                    MA_PTTT = node.GetValue("MA_PTTT"),
                 };
 
                 result.Add(thuoc);

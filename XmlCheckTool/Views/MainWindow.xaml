@@ -29,7 +29,6 @@
             <!-- Button Clear -->
             <Button Content="Xóa dữ liệu đã import"
                     Command="{Binding ClearXmlCommand}"
-                    IsEnabled="{Binding CanClear}"
                     Height="40"
                     Width="200"/>
         </StackPanel>
@@ -38,17 +37,45 @@
         <TabControl>
 
             <TabItem Header="XML1">
-                <DataGrid ItemsSource="{Binding XML1_UI}" AutoGenerateColumns="True"/>
+                <DataGrid ItemsSource="{Binding XML1_UI}" AutoGenerateColumns="True"
+                          CanUserAddRows="False"
+                          CanUserDeleteRows="False"
+                          CanUserReorderColumns="False"
+                          CanUserResizeRows="False"
+                          CanUserSortColumns="True"
+                          IsReadOnly="True"/>
             </TabItem>
+
             <TabItem Header="XML2">
-                <DataGrid ItemsSource="{Binding XML2_UI}" AutoGenerateColumns="True"/>
+                <DataGrid ItemsSource="{Binding XML2_UI}" AutoGenerateColumns="True"
+               CanUserAddRows="False"
+               CanUserDeleteRows="False"
+               CanUserReorderColumns="False"
+               CanUserResizeRows="False"
+               CanUserSortColumns="True"
+               IsReadOnly="True"/>
             </TabItem>
+
             <TabItem Header="XML3">
-                <DataGrid ItemsSource="{Binding XML3_UI}" AutoGenerateColumns="True"/>
+                <DataGrid ItemsSource="{Binding XML3_UI}" AutoGenerateColumns="True"
+               CanUserAddRows="False"
+               CanUserDeleteRows="False"
+               CanUserReorderColumns="False"
+               CanUserResizeRows="False"
+               CanUserSortColumns="True"
+               IsReadOnly="True"/>
             </TabItem>
+
             <TabItem Header="XML4">
-                <DataGrid ItemsSource="{Binding XML4_UI}" AutoGenerateColumns="True"/>
+                <DataGrid ItemsSource="{Binding XML4_UI}" AutoGenerateColumns="True"
+               CanUserAddRows="False"
+               CanUserDeleteRows="False"
+               CanUserReorderColumns="False"
+               CanUserResizeRows="False"
+               CanUserSortColumns="True"
+               IsReadOnly="True"/>
             </TabItem>
+
             <TabItem Header="XML5">
                 <DataGrid ItemsSource="{Binding XML1_List}" AutoGenerateColumns="True"/>
             </TabItem>

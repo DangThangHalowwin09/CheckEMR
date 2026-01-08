@@ -11,44 +11,37 @@ namespace XmlCheckTool.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
-        // ================= COMMAND =================
         public RelayCommand ImportXmlCommand { get; }
         public RelayCommand ClearXmlCommand { get; }
 
-        // ================= UI COLLECTION =================
         public ObservableCollection<XML1_Model> XML1_UI { get; } = new();
         public ObservableCollection<XML2_Model> XML2_UI { get; } = new();
         public ObservableCollection<XML3_Model> XML3_UI { get; } = new();
         public ObservableCollection<XML4_Model> XML4_UI { get; } = new();
-        public ObservableCollection<XML1_Model> XML5_UI { get; } = new();
 
-        // ================= SERVICE =================
         private readonly IXmlImportService _xmlService;
         private readonly IFilePickerService _filePicker;
 
-        // ================= STATE =================
-        private bool _canClear;
-        public bool CanClear
-        {
-            get => _canClear;
-            set
-            {
-                _canClear = value;
-                OnPropertyChanged();
-            }
-        }
-
-        // ================= CONSTRUCTOR =================
         public MainViewModel()
         {
             _filePicker = new FilePickerService();
             _xmlService = new XmlImportService();
 
             ImportXmlCommand = new RelayCommand(ImportXml);
-            ClearXmlCommand = new RelayCommand(ClearXml, () => CanClear);
+            ClearXmlCommand = new RelayCommand(ClearXml, CanClear);
         }
 
-        // ================= IMPORT =================
+        /// <summary>
+        /// Chỉ cần có dữ liệu là button Clear sáng
+        /// </summary>
+        private bool CanClear()
+        {
+            return XML1_UI.Count > 0
+                || XML2_UI.Count > 0
+                || XML3_UI.Count > 0
+                || XML4_UI.Count > 0;
+        }
+
         private void ImportXml()
         {
             var files = _filePicker.PickFiles();
@@ -62,19 +55,9 @@ namespace XmlCheckTool.ViewModels
                     var result = _xmlService.Import(file);
 
                     XML1_UI.Add(result.XML1);
-
-                    foreach (var item in result.XML2_List)
-                        XML2_UI.Add(item);
-
-                    foreach (var item in result.XML3_List)
-                        XML3_UI.Add(item);
-
-                    foreach (var item in result.XML4_List)
-                        XML4_UI.Add(item);
-
-                    // Sau khi import thành công
-                    CanClear = true;
-                    ClearXmlCommand.RaiseCanExecuteChanged();
+                    result.XML2_List.ForEach(XML2_UI.Add);
+                    result.XML3_List.ForEach(XML3_UI.Add);
+                    result.XML4_List.ForEach(XML4_UI.Add);
                 }
                 catch (Exception ex)
                 {
@@ -85,9 +68,11 @@ namespace XmlCheckTool.ViewModels
                         MessageBoxImage.Warning);
                 }
             }
+
+            // 🔴 DÒNG QUAN TRỌNG – NẾU THIẾU → BUTTON KHÔNG SÁNG
+            ClearXmlCommand.RaiseCanExecuteChanged();
         }
 
-        // ================= CLEAR =================
         private void ClearXml()
         {
             if (MessageBox.Show(
@@ -95,17 +80,14 @@ namespace XmlCheckTool.ViewModels
                 "Xác nhận",
                 MessageBoxButton.YesNo,
                 MessageBoxImage.Question) != MessageBoxResult.Yes)
-            {
                 return;
-            }
 
             XML1_UI.Clear();
             XML2_UI.Clear();
             XML3_UI.Clear();
             XML4_UI.Clear();
-            XML5_UI.Clear();
 
-            CanClear = false;
+            ClearXmlCommand.RaiseCanExecuteChanged();
         }
     }
 }
